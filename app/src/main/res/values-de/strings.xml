@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Brandenburg Badestellen</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="temperature">Temperature:</string>
+    <string name="last_measurement_date">Last Measurement Date:</string>
+    <string name="rating">Rating:</string>
+    <string name="visibility_depth">Visibility Depth:</string>
+    <string name="services">Services:</string>
+    <string name="filter">Filter</string>
+    <string name="done">Fertig</string>
+    <string name="clear">Löschen</string>
+    <string name="waste_disposal">Waste Disposal</string>
+    <string name="gastronomy">Gastronomy</string>
+    <string name="lifeguard">Lifeguard</string>
+    <string name="parking_area">Parking Area</string>
+    <string name="lavatory">Lavatory</string>
+    <string name="sunbathing_area">Sunbathing Area</string>
+    <string name="fishing_allowed">Fishing Allowed</string>
+    <string name="playground">Playground</string>
+    <string name="barbecue_area">Barbecue Area</string>
+    <string name="camping_allowed">Camping Allowed</string>
+    <string name="more">More</string>
+    <string name="favorites">Favorites</string>
+    <string name="favorite">Favorite</string>
+    <string name="navigate">Navigate</string>
+    <string name="details_image_content_description">An Image of the bathing area</string>
+</resources>

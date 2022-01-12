@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Beaches" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/red_700</item>
+        <item name="colorPrimaryVariant">@color/red_900</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/indigo_200</item>
+        <item name="colorSecondaryVariant">@color/indigo_400</item>
+        <item name="colorOnSecondary">@color/text_color</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.Beaches.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Beaches.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Beaches.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="LocationDetailsLabel" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="LocationDetailsValue" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>
