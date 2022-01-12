@@ -22,7 +22,7 @@ android {
         versionName '0.0.2'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-        manifestPlaceholders = [google_map_key: project.findProperty('googleMapKey')]
+        manifestPlaceholders = [google_map_key: System.getenv('GOOGLE_MAPS_KEY')]
     }
 
     buildTypes {
