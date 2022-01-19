@@ -25,14 +25,14 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
 
-    - name: Build Release AAB
+    - name: Build Release APK
       env:
         GOOGLE_MAPS_KEY: ${{ secrets.GOOGLE_MAPS_KEY }}
-      run: ./gradlew bundleRelease
+      run: ./gradlew buildRelease
 
     - name: Upload AAB
       id: uploadArtifact
       uses: actions/upload-artifact@v1
       with:
         name: app
-        path: app/build/outputs/bundle/release/app-release.aab
+        path: app/build/outputs/build/release/app-release-unsigned.apk
