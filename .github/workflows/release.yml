@@ -28,7 +28,7 @@ jobs:
     - name: Build Release APK
       env:
         GOOGLE_MAPS_KEY: ${{ secrets.GOOGLE_MAPS_KEY }}
-      run: ./gradlew buildRelease
+      run: ./gradlew publish
 
     - name: Upload AAB
       id: uploadArtifact
