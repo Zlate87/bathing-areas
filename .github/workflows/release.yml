@@ -28,6 +28,8 @@ jobs:
     - name: Build Release APK
       env:
         GOOGLE_MAPS_KEY: ${{ secrets.GOOGLE_MAPS_KEY }}
+        GH_USER: ${{ secrets.GH_USER }}
+        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       run: ./gradlew publish
 
     - name: Upload AAB
