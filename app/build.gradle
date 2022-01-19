@@ -13,6 +13,18 @@ plugins {
 android {
     compileSdk 31
 
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
 
     defaultConfig {
         applicationId 'com.example.zlatko.beaches'
