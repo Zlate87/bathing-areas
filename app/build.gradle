@@ -32,7 +32,7 @@ android {
         minSdk 28
         targetSdk 31
         versionCode new Date().format('yyMMddHH') as Integer
-        versionName gitBranch()
+        versionName getVersionName()
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         manifestPlaceholders = [google_map_key: System.getenv('GOOGLE_MAPS_KEY')]
@@ -58,7 +58,16 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion '1.1.0-beta04'
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "brandenburg-bathing-areas_${getVersionName()}.apk"
+        }
+    }
+
 }
+
+
 
 dependencies {
 
@@ -134,33 +143,8 @@ kapt {
 }
 
 
-afterEvaluate {
-    publishing {
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/Zlate87/brandenburg-bathing-areas"
-                credentials {
-                    username = System.getenv("GH_USER")
-                    password = System.getenv("GH_ACCESS_TOKEN")
-                }
-            }
-        }
-        publications {
-            release(MavenPublication) {
-                from components.release_apk
-                groupId = 'com.example.zlatko.beaches'
-                artifactId = 'brandenburg-bathing-areas'
-                version = gitBranch()
-            }
-            debug(MavenPublication) {
-                from components.debug_apk
-                groupId = 'com.example.zlatko.beaches'
-                artifactId = 'brandenburg-bathing-areas-debug'
-                version = gitBranch()
-            }
-        }
-    }
+def getVersionName() {
+    System.getenv('VERSION') ?: gitBranch()
 }
 
 def gitBranch() {

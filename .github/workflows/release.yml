@@ -1,16 +1,9 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
-
 name: Release
 
 on:
-  release:
-    types:
-      - created
+  create:
+    tags:
+      - v*
 
 jobs:
   build:
@@ -19,20 +12,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up JDK 11
       uses: actions/setup-java@v2
       with:
         java-version: '11'
         distribution: 'adopt'
 
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=tag;]$(echo ${GITHUB_REF/refs\/tags\//})"
+      id: extractBranch
+
     - name: Build Release APK
       env:
         GOOGLE_MAPS_KEY: ${{ secrets.GOOGLE_MAPS_KEY }}
+        VERSION: ${{ steps.extractBranch.outputs.tag }}
       run: ./gradlew assembleRelease
 
     - name: Sign artifact
       id: signArtifact
-      uses: r0adkll/sign-android-release@v1.0.1
+      uses: r0adkll/sign-android-release@v1
       with:
         releaseDirectory: app/build/outputs/apk/release/
         alias: ${{ secrets.ALIAS }}
@@ -45,4 +45,15 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: app
-        path: app/build/outputs/apk/release/*.apk
+        path: ${{steps.signArtifact.outputs.signedReleaseFile}}
+
+    - name: Create Release
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: ${{ secrets.GH_ACCESS_TOKEN }}
+        automatic_release_tag: ${{ steps.extractBranch.outputs.tag }}
+        prerelease: false
+        draft: true
+        title: ${{ steps.extractBranch.outputs.tag }}
+        files: |
+          ${{steps.signArtifact.outputs.signedReleaseFile}}
