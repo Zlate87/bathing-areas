@@ -32,7 +32,7 @@ android {
         minSdk 28
         targetSdk 31
         versionCode new Date().format('yyMMddHH') as Integer
-        versionName getVersionName()
+        versionName version()
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         manifestPlaceholders = [google_map_key: System.getenv('GOOGLE_MAPS_KEY')]
@@ -61,12 +61,11 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "brandenburg-bathing-areas_${getVersionName()}.apk"
+            outputFileName = "brandenburg-bathing-areas_${version()}.apk"
         }
     }
 
 }
-
 
 
 dependencies {
@@ -79,7 +78,6 @@ dependencies {
     // for Maps
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.maps.android:android-maps-utils:2.0.3'
-
 
 
     // for dependency injection
@@ -121,7 +119,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
 
-
     // for compose
     def compose_version = '1.0.5'
     implementation 'androidx.activity:activity-compose:1.4.0'
@@ -143,8 +140,9 @@ kapt {
 }
 
 
-def getVersionName() {
-    System.getenv('VERSION') ?: gitBranch()
+def version() {
+    def version = System.getenv('VERSION') ?: gitBranch()
+    version
 }
 
 def gitBranch() {
