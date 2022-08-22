@@ -24,7 +24,7 @@ class ModelConverter {
             rating = data["rating"],
             favorite = favorites.contains(id),
             features = extractServices(data),
-            imageUrl = "${BrandenburgClient.IMAGE_BASE_URL}${id}",
+            imageUrl = "${BrandenburgClient.IMAGE_BASE_URL}${id}.jpg",
             detailsUrl = "${BrandenburgClient.DETAILS_BASE_URL}${id}"
         )
     }
@@ -54,7 +54,7 @@ class ModelConverter {
             visibilityDepth = location.visibilityDepth,
             rating = location.rating,
             favorite = location.favorite,
-            imageUrl = "${BrandenburgClient.IMAGE_BASE_URL}${location.id}",
+            imageUrl = "${BrandenburgClient.IMAGE_BASE_URL}${location.id}.jpg",
             detailsUrl = "${BrandenburgClient.DETAILS_BASE_URL}${location.id}",
             features = location.features
                 .split(",")
