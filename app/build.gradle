@@ -12,7 +12,7 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     bundle {
         language {
@@ -30,7 +30,7 @@ android {
     defaultConfig {
         applicationId 'com.example.zlatko.beaches'
         minSdk 28
-        targetSdk 31
+        targetSdk 33
         versionCode new Date().format('yyMMddHH') as Integer
         versionName version()
 
@@ -77,6 +77,7 @@ dependencies {
 
     // for Maps
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.maps.android:maps-compose:2.7.2'
     implementation 'com.google.maps.android:android-maps-utils:2.0.3'
 
 
@@ -102,12 +103,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
 
-    // for DAO
-    def roomVersion = "2.4.0"
-    implementation "androidx.room:room-runtime:$roomVersion"
-    implementation("androidx.room:room-ktx:$roomVersion")
-    annotationProcessor "androidx.room:room-compiler:$roomVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
+    // for storing the favorites in datastore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 
     // for working with images
     implementation 'io.coil-kt:coil-compose:1.4.0'
@@ -118,10 +115,12 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
+    // for CSV
+    implementation 'com.github.doyaaaaaken:kotlin-csv-jvm:1.6.0'
 
     // for compose
-    def compose_version = '1.0.5'
-    implementation 'androidx.activity:activity-compose:1.4.0'
+    def compose_version = '1.2.1'
+    implementation 'androidx.activity:activity-compose:1.6.0'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Brandenburg Bathing Areas</string>
+    <string name="app_name">Bathing Areas</string>
     <string name="title_activity_maps">MapsActivity</string>
 
     <string name="temperature">Temperature:</string>
@@ -25,4 +25,6 @@
     <string name="favorite">Favorite</string>
     <string name="navigate">Navigate</string>
     <string name="details_image_content_description">An Image of the bathing area</string>
+    <string name="loading">Loading…</string>
+    <string name="error">Error :(</string>
 </resources>
